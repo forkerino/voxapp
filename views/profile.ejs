@@ -24,19 +24,27 @@
                 <h3><span class="fa fa-user"></span> My Data</h3>
 
                     <p>
+                        <strong>username</strong>: <%= user.local.username %><br>
                         <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
+
                     </p>
 
             </div>
         </div>
         
         <div class="col-sm-6">
-            <p><%= polls %></p>
+            <ul><% for(var i=0; i<polls.length; i++) {%>
+               <li><%= polls[i].question %> <span class="fa fa-trash-o delete" id="<%= polls[i]._id %>"></span></li>
+               <ul><% for(var j=0; j<polls[i].answers.length; j++) {%>
+                   <li><%= polls[i].answers[j].answer %> <%= polls[i].answers[j].votes %></li>
+               <% } %></ul>
+            <% } %></ul>
         </div>        
 
     </div>
 
 </div>
+
+<script type="text/javascript" src="/controllers/profileCtrl.client.js"></script>
 </body>
 </html>

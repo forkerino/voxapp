@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 mongoose.Promise = global.Promise;
 let userSchema = mongoose.Schema({
     local            : {
+        username     : String,
         email        : String,
         password     : String
     } 

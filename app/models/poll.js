@@ -5,9 +5,10 @@ mongoose.Promise = global.Promise;
 
 let pollSchema = mongoose.Schema({
     userid : String,
+    username : String,
     question : String,
     answers : [{answer: String, votes: Number}],
-    answeredBy : [{userid: String}]
+    answeredByIP : []
 });
 
 
