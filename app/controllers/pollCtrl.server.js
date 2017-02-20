@@ -50,13 +50,22 @@ const pollCtrl = {
     
     addVote: function addVote(vote){
         console.log(vote);
-        Poll.findOneAndUpdate({answers: { $elemMatch: { '_id': vote.voteid}}},
+        Poll.findOneAndUpdate({answers: { $elemMatch: { '_id': vote.voteid}}, 'answeredByIP': { $nin: [vote.userIP]}},
         { $inc: {'answers.$.votes': 1}, $push: {'answeredByIP': vote.userIP}},
         {new: true}, 
         function(err, poll){
             if (err) throw err;
             console.log(poll);
         });
+    }, 
+    
+    addOption: function addOption(option){
+        Poll.findOneAndUpdate({_id: option.pollid}, 
+            {$push: {answers: { answer: option.answer, votes: 0 }}}, 
+            function(err, poll){
+                if (err) throw err;
+            }
+        );
     }
 };
 module.exports = pollCtrl;

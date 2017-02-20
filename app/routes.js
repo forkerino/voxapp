@@ -34,7 +34,10 @@ const router = function(app, passport) {
     
     app.get('/:user/:poll', pollCtrl.getPoll, function(req, res){
         res.render('poll.ejs', {
+            user: req.user || false,
             poll: req.poll,
+            path: req.originalUrl,
+            host: req.hostname,
         });
     });
     
@@ -47,17 +50,16 @@ const router = function(app, passport) {
             res.status(200).send();
         });
     
-    app.put('/api/votes/:vote', function (req, res){
+    app.put('/api/polls/:vote', function (req, res){
         // vote on a poll
         pollCtrl.addVote({
             voteid : req.params.vote,
-            userIP : req.ip,
+            userIP : req.headers['x-forwarded-for'] || 
+                     req.connection.remoteAddress || 
+                     req.socket.remoteAddress ||
+                     req.connection.socket.remoteAddress,
         });
         res.sendStatus(200);
-    });
-    
-    app.get('/api/users/:id', function (req, res){
-        // get the user from the database 
     });
     
     app.post('/api/users', passport.authenticate('local-signup',{
@@ -74,7 +76,7 @@ const router = function(app, passport) {
         failureFlash : true 
     }));
     
-    app.post('/api/addpoll', function(req, res){
+    app.post('/api/addpoll', isLoggedIn, function(req, res){
         // add a poll to the db
         pollCtrl.addPoll({ 
             userid: req.user._id,
@@ -83,6 +85,15 @@ const router = function(app, passport) {
             answers: req.body.answers
         });
         res.redirect('/profile');
+    });
+    
+    app.post('/api/addoption', isLoggedIn, function(req, res){
+        console.log(req.query);
+        pollCtrl.addOption({
+            pollid: req.query.pollid,
+            answer: req.query.answer,
+        });
+        res.sendStatus(200);
     });
 };
 

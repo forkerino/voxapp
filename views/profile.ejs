@@ -34,7 +34,9 @@
         
         <div class="col-sm-6">
             <ul><% for(var i=0; i<polls.length; i++) {%>
-               <li><%= polls[i].question %> <span class="fa fa-trash-o delete" id="<%= polls[i]._id %>"></span></li>
+               <li><a href="<%= user.local.username %>/<%= polls[i].question %>">
+                       <%= polls[i].question %>
+                    </a> <span class="fa fa-trash-o delete" id="<%= polls[i]._id %>"></span></li>
                <ul><% for(var j=0; j<polls[i].answers.length; j++) {%>
                    <li><%= polls[i].answers[j].answer %> <%= polls[i].answers[j].votes %></li>
                <% } %></ul>

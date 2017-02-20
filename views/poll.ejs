@@ -14,10 +14,24 @@
 <div class="col-sm-6 col-sm-offset-3">
 
     <h1><span class="fa fa-question"></span> <%= poll[0].question %></h1>
+    <well>Share link:<span id="link"><%= `https://${host}${path}` %></span> <span class="fa fa-copy" id="copy"></span> 
+    </well>
 
-    <ul><% for(var j=0; j<poll[0].answers.length; j++) {%>
+    <ul>
+        <% for(var j=0; j<poll[0].answers.length; j++) {%>
         <li id="<%= poll[0].answers[j]._id %>" class="option"><span class="fa fa-angle-right"></span> <%= poll[0].answers[j].answer %>   <span><%= poll[0].answers[j].votes %></span></li>
-    <% } %></ul>
+        <% } %>
+    </ul>
+    <% if (user) { %>
+        <form>
+            <div class="form-group answer">
+                <label>Answer:</label>
+                <input type="text" class="form-control" name="answer" id="answer" required>
+                <button class="btn btn-warning btn-md" id="addoption"><span class="fa fa-plus"></span></button>
+                <input type="hidden" class="form-control" name="pollid" id="pollid" value="<%=poll[0]._id%>">
+            </div>
+        </form>
+    <% } %>
 </div>
 
 </div>
