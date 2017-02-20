@@ -32,7 +32,7 @@ const router = function(app, passport) {
         res.redirect('/');
     });
     
-    app.get('/:user/:poll', pollCtrl.getPoll, function(req, res){
+    app.get('/:user/:pollid', pollCtrl.getPoll, function(req, res){
         res.render('poll.ejs', {
             user: req.user || false,
             poll: req.poll,

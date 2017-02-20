@@ -14,7 +14,7 @@
 <div class="col-sm-6 col-sm-offset-3">
 
     <h1><span class="fa fa-question"></span> <%= poll[0].question %></h1>
-    <well>Share link:<span id="link"><%= `https://${host}${path}` %></span> <span class="fa fa-copy" id="copy"></span> 
+    <well>Copy link:<span id="link" hidden><%= `https://${host}${path}` %></span> <span class="fa fa-copy" id="copy"></span> 
     </well>
 
     <ul>
@@ -42,14 +42,22 @@
 <script>
     const answers = [];
     const votes = [];
-    console.log("Poll: ", <%- JSON.stringify(poll[0].answers) %>);
-    <%- JSON.stringify(poll[0].answers) %>.filter(v => v.votes !== 0)
+    const colorsBack = [];
+    const colorsBord = [];
+    
+    <%- JSON.stringify(poll[0].answers) %>//.filter(v => v.votes !== 0)
         .sort((a,b)=> b.votes - a.votes)
         .forEach(v => {
             answers.push(v.answer);
             votes.push(v.votes);
+            let r = Math.floor(Math.random() * 192) + 64;
+            let g = Math.floor(Math.random() * 192) + 64;
+            let b = Math.floor(Math.random() * 192) + 64;
+            colorsBack.push(`rgba(${r}, ${g},${b}, 0.3`);
+            colorsBord.push(`rgba(${r}, ${g},${b}, 1`);
         });
     const ctx = document.getElementById('votesChart').getContext("2d");
+     
     const chart = new Chart(ctx, {
         type: 'horizontalBar',
         data: {
@@ -57,34 +65,27 @@
         datasets: [{
             label: '# of Votes',
             data: votes,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: colorsBack,
+            borderColor: colorsBord,
             borderWidth: 1
         }]
     },
         options: {
         scales: {
             xAxes: [{
-                position: "top"  
+                position: "top",
+                ticks: { 
+                    beginAtZero: true,
+                    stepSize: 1
+                },
+                stacked: true,
             }],
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
-                }
+                    beginAtZero:true, 
+                    mirror: true,
+                    padding: -5
+                },
             }]
         }
     }

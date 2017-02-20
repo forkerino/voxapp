@@ -6,7 +6,7 @@ const User = require('../models/user.js');
 
 const pollCtrl = {
     getPoll: function getPoll(req, res, next){
-        Poll.find({username: req.params.user, question: req.params.poll}, function(err, poll){
+        Poll.find({username: req.params.user, _id: req.params.pollid}, function(err, poll){
             if (err) throw err;
             req.poll = poll;
             next();

@@ -9,7 +9,7 @@
                     window.location = '/profile';
                 }
             };
-            deleteReq.open('DELETE', `/api/votes/${id}`, true);
+            deleteReq.open('DELETE', `/api/polls/${id}`, true);
             deleteReq.send();
         });
     }
