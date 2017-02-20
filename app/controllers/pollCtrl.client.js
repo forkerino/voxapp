@@ -1,5 +1,4 @@
 'use strict';
-
 (function(){
     let options = document.getElementsByClassName('option');
     let currentLocation = window.location.pathname;

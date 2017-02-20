@@ -32,9 +32,63 @@
             </div>
         </form>
     <% } %>
+    
+    <canvas id="votesChart" width="400" height="400"></canvas>
 </div>
 
 </div>
 <script type="text/javascript" src="/controllers/pollCtrl.client.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+<script>
+    const answers = [];
+    const votes = [];
+    console.log("Poll: ", <%- JSON.stringify(poll[0].answers) %>);
+    <%- JSON.stringify(poll[0].answers) %>.filter(v => v.votes !== 0)
+        .sort((a,b)=> b.votes - a.votes)
+        .forEach(v => {
+            answers.push(v.answer);
+            votes.push(v.votes);
+        });
+    const ctx = document.getElementById('votesChart').getContext("2d");
+    const chart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+        labels: answers,
+        datasets: [{
+            label: '# of Votes',
+            data: votes,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+        options: {
+        scales: {
+            xAxes: [{
+                position: "top"  
+            }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+    });
+</script>
 </body>
 </html>
