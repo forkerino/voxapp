@@ -5,6 +5,7 @@
     for (let i=0; i<options.length; i++){
         options[i].addEventListener('click',function(e){
             let id = e.target.getAttribute('id');
+            if (id== null) return;
             let voteReq = new XMLHttpRequest();
             voteReq.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200){
@@ -27,9 +28,9 @@
         document.body.removeChild(textarea);
     });
     
-    let addOptionBtn = document.getElementById('addoption');
-    addOptionBtn.addEventListener('click', function(e){
-        e.preventDefault();
+    let addOptionBtn = document.getElementById('answer');
+    addOptionBtn.addEventListener('keypress', function(e){
+        if (e.keyCode!== 13) return;
         let answer = document.getElementById('answer').value; 
         
         if (answer === "") return;

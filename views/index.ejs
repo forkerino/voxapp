@@ -3,7 +3,8 @@
 <html>
 <head>
     <title>Home - VoxApp</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/public/style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 </head>
 <body>
@@ -14,10 +15,10 @@
     <% } %>
 <div class="container">
 
-    <div class="jumbotron text-center">
+    <div>
         <h1>VoxApp</h1>
     </div>
-    <div>
+    <div class="polls">
         <p>Latest Polls:</p>
             <ul><% for(var i=0; i<polls.length; i++) {%>
                 <li>

@@ -46,7 +46,9 @@ const pollCtrl = {
             newPoll.userid = poll.userid;
             newPoll.question = poll.question;
             newPoll.answers = poll.answers.map(function(answer){
-                return { answer: answer, votes: 0 };
+                if (answer !== ""){
+                    return { answer: answer, votes: 0 };
+                }
             });
             newPoll.answeredBy = [];
             console.log(newPoll);

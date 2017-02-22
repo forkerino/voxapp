@@ -2,7 +2,8 @@
 <html>
 <head>
     <title><%= poll[0].question %> - VoxApp</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/public/style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 </head>
 <body>
@@ -13,9 +14,10 @@
     <% } %>
 <div class="container">
 
-<div class="col-sm-6 col-sm-offset-3">
+<div class="polls">
 
     <h1><span class="fa fa-question"></span> <%= poll[0].question %></h1>
+    <p class="subtitle">A poll by <%= poll[0].username %></p>
     <well>Copy link:<span id="link" hidden><%= `https://${host}${path}` %></span> <span class="fa fa-copy" id="copy"></span> 
     </well>
 
@@ -25,17 +27,15 @@
         <% } %>
     </ul>
     <% if (user) { %>
-        <form>
-            <div class="form-group answer">
-                <label>Answer:</label>
-                <input type="text" class="form-control" name="answer" id="answer" required>
-                <button class="btn btn-warning btn-md" id="addoption"><span class="fa fa-plus"></span></button>
-                <input type="hidden" class="form-control" name="pollid" id="pollid" value="<%=poll[0]._id%>">
-            </div>
+        <form class="answer">
+            <label>Add Answer:</label>
+            <input type="text" class="form-control" name="answer" id="answer" required>
+            <input type="hidden" class="form-control" name="pollid" id="pollid" value="<%=poll[0]._id%>">
         </form>
     <% } %>
     
-    <canvas id="votesChart" width="400" height="400"></canvas>
+    <h1>Results:</h1>
+    <canvas id="votesChart" width="400" height="200"></canvas>
 </div>
 
 </div>
@@ -53,10 +53,10 @@
         .forEach(v => {
             answers.push(v.answer);
             votes.push(v.votes);
-            let r = Math.floor(Math.random() * 192) + 64;
-            let g = Math.floor(Math.random() * 192) + 64;
-            let b = Math.floor(Math.random() * 192) + 64;
-            colorsBack.push(`rgba(${r}, ${g},${b}, 0.3`);
+            let r = Math.floor(Math.random() * 128) + 128;
+            let g = Math.floor(Math.random() * 128) + 128;
+            let b = Math.floor(Math.random() * 128) + 128;
+            colorsBack.push(`rgba(${r}, ${g},${b}, 0.5`);
             colorsBord.push(`rgba(${r}, ${g},${b}, 1`);
         });
     const ctx = document.getElementById('votesChart').getContext("2d");

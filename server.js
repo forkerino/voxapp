@@ -23,6 +23,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
+app.use('/public', express.static(process.cwd() + '/public'));
 
 app.set('view engine', 'ejs');
 

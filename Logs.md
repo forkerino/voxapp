@@ -23,3 +23,25 @@ Added it in script tags at the bottom of the page. Maybe refactor later.
 
 19.00: 
 All that is left is styling. Will continue later.
+
+22-2-2017:
+14.50: Objective:
+Create a partial for the login/signup buttons, which should go at the top. 
+
+15.20: Objective:
+Display latest 5 polls on frontpage.
+
+15.30: Objective: 
+Create partial for the footer and for the user options. 
+
+15.55: Time to commit.
+
+16.00: Objective:
+Remove bootstrap and do stuff myself
+
+The removing part was easy, now on with the boring stuff.
+
+16.32: Have been working on a bug, because the server couldn't find my stylesheet. 
+Had to add `app.use('/public', express.static(process.cwd() + '/public'));` 
+in my server.js to access the folder.
+

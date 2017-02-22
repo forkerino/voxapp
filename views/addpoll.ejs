@@ -2,30 +2,31 @@
 <html>
 <head>
     <title>Add Poll - VoxApp</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/public/style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 </head>
 <body>
+    <% include ./partials/userbar %>
 <div class="container">
 
-<div class="col-sm-6 col-sm-offset-3">
+<div class="polls">
 
     <h1><span class="fa fa-plus"></span> Add Poll</h1>
     
     <form action="/api/addpoll" method="post">
         <div class="form-group">
             <label>Question</label>
-            <input type="text" class="form-control" name="question" required>
+            <input type="text" class="form-control" name="question" required autofocus>
         </div>
         <div class="form-group answers">
             <label>Answers</label>
             <input type="text" class="form-control" name="answers" id="a0" required>
             <input type="text" class="form-control" name="answers" id="a1" required>
-            <button type="button" class="btn btn-default btn-md" id="addOption"><span class="fa fa-plus"></span> more options</button>
+            <button type="button" class="btn" id="addOption"><span class="fa fa-plus"></span> More Answers</button>
+            <button type="submit" class="btn right">Create Poll</button>
+            <button type="reset" class="btn reset right">Reset</button>
         </div>
-        
-        <button type="submit" class="btn btn-warning btn-md">Create Poll</button>
-        
     </form>
 </div>
 

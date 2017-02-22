@@ -16,7 +16,7 @@ const router = function(app, passport) {
     
     
     app.get('/addpoll', isLoggedIn, function(req, res) {
-        res.render('addpoll.ejs');
+        res.render('addpoll.ejs', { user: req.user});
     });
 
     app.get('/signup', function(req, res) {

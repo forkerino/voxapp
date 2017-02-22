@@ -1,0 +1,155 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 80px 0 80px;
+    padding: 0;
+    background-color: #EEE;
+    min-height: 100%;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+h1, h3 {
+    color: #0C93E8;
+}
+
+span.fa {
+    color: #19A176;
+    cursor: pointer;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px dotted black;
+}
+
+.polls {
+    margin: auto;
+    width: 70%;
+    
+}
+
+.subtitle {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.userbar, .loginbar {
+    position: fixed;
+    width: 100vw;
+    overflow: hidden;
+    height: 50px;
+    top: 0;
+    background-color: #1D58FF;
+    color: #fff;
+    box-shadow: 0 0 5px #1D58FF;
+}
+
+.userbar a, .userbar a:hover, .loginbar a:hover, .userbar span, 
+.userbar.right a, .loginbar a, .loginbar.right a, .loginbar span {
+    text-decoration: none;
+    border-bottom: 0;
+    padding: 1rem;
+    color: #fff;
+}
+
+.userbar .welcome span {
+    font-style: italic;
+}
+.right {
+    float: right;
+}
+.logout, .signupbtn {
+    margin-right: 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin: 8px 3px;
+    cursor: pointer;
+}
+
+form {
+    margin: auto;
+    width: 70%;
+    max-width: 600px;
+    line-height: 1.5em;
+    border-radius: 10px;
+}
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    display: block;
+    height: 2em;
+    border-radius: 3px;
+    padding-left: 6px;
+    margin: 3px;
+    border: 1px solid rgba(29, 88, 255, 0.5);
+}
+form.answer {
+    display: inline;
+    margin-bottom: 20px;
+}
+
+.answer input {
+    width: 90%;
+}
+
+.form-group>button {
+    border: 1px solid rgba(29, 88, 255, 1);
+    background-color: rgba(29, 88, 255, 0.8);
+    color: white;
+    height: 2em;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.form-group>button span {
+    color: white;
+}
+
+.form-group>button.reset {
+    background-color: rgba(255,0,0, 0.8);
+    border: 1px solid rgba(255,0,0, 1);
+}
+
+canvas {
+    margin-top: 20px;
+}
+footer {
+    position: fixed;
+    box-shadow: 0 0 5px #1D58FF;
+    bottom: 0 !important;
+    background-color: #1D58FF;
+    color: #fff;
+    height: 50px;
+    text-align: center;
+    padding: 5px 10px;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+footer a span.fa {
+    color: #fff;
+}
+
+footer a:hover {
+    text-decoration: none;
+    border-bottom: none;
+}
