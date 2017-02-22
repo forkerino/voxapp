@@ -1,38 +1,17 @@
 <!doctype html>
 <html>
 <head>
-    <title>Node Authentication</title>
+    <title>Profile - VoxApp</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        body        { padding-top:80px; word-wrap:break-word; }
-    </style>
 </head>
 <body>
+    <% include ./partials/userbar %>
 <div class="container">
-
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-        <a href="/addpoll" class="btn btn-default btn-sm">Add Poll</a>
-    </div>
+    
 
     <div class="row">
-
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> My Data</h3>
-
-                    <p>
-                        <strong>username</strong>: <%= user.local.username %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-
-                    </p>
-
-            </div>
-        </div>
-        
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-sm-offset-3">
             <ul><% for(var i=0; i<polls.length; i++) {%>
                <li><a href="<%= user.local.username + "/" + polls[i]._id %>">
                        <%= polls[i].question %>
@@ -48,5 +27,6 @@
 </div>
 
 <script type="text/javascript" src="/controllers/profileCtrl.client.js"></script>
+<% include ./partials/footer %>
 </body>
 </html>

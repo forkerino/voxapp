@@ -22,6 +22,16 @@ const pollCtrl = {
         });  
     },
     
+    getLatestPolls: function getLatestPolls(req, res, next){
+        Poll.find().limit(5).sort({_id: -1}).exec(function(err, polls){
+            if (err) throw err;
+            req.polls = [];
+            polls.map(poll => req.polls.push(poll));
+            console.log(req.polls);
+            next();
+        });  
+    },
+    
     deletePoll: function deletePoll(req, res, next){
         Poll.findOneAndRemove({_id: req.params.id}, function(err, doc){
             if (err) throw err;

@@ -1,14 +1,16 @@
 <!doctype html>
 <html>
 <head>
-    <title>Node Authentication</title>
+    <title><%= poll[0].question %> - VoxApp</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <style>
-        body        { padding-top:80px; }
-    </style>
 </head>
 <body>
+    <% if (!user) { %>
+        <% include ./partials/loginbar %>
+    <% } else { %>
+        <% include ./partials/userbar %>
+    <% } %>
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
@@ -37,6 +39,7 @@
 </div>
 
 </div>
+<% include ./partials/footer %>
 <script type="text/javascript" src="/controllers/pollCtrl.client.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 <script>

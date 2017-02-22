@@ -3,8 +3,11 @@ const pollCtrl = require('./controllers/pollCtrl.server.js');
 
 const router = function(app, passport) {
     // front end routes
-    app.get('/', function(req, res) {
-        res.render('index.ejs'); 
+    app.get('/', pollCtrl.getLatestPolls, function(req, res) {
+        res.render('index.ejs', {
+            user: req.user,
+            polls: req.polls
+        }); 
     });
 
     app.get('/login', function(req, res) {
