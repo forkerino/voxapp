@@ -12,6 +12,8 @@ const session      = require('express-session');
 const configDB = require('./config/database.js');
 const routes = require('./app/routes.js');
 const configPP = require('./config/passport.js');
+const path = require('path');
+const favicon = require('serve-favicon');
 
 const app = express();
 
@@ -24,6 +26,7 @@ app.use(cookieParser());
 app.use(bodyParser());
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
+app.use(favicon(path.join(__dirname,'public','img','favicon.png')));
 
 app.set('view engine', 'ejs');
 

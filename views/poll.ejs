@@ -17,21 +17,21 @@
 <div class="polls">
 
     <h1><span class="fa fa-question"></span> <%= poll[0].question %></h1>
-    <p class="subtitle">A poll by <%= poll[0].username %></p>
-    <well>Copy link:<span id="link" hidden><%= `https://${host}${path}` %></span> <span class="fa fa-copy" id="copy"></span> 
+    <p class="subtitle">A poll by <%= poll[0].username %>
+    <well class="right">Copy direct link:<span id="link" hidden><%= `https://${host}${path}` %></span> <span class="fa fa-copy" id="copy"></span> 
     </well>
+    </p>
 
     <ul>
         <% for(var j=0; j<poll[0].answers.length; j++) {%>
-        <li id="<%= poll[0].answers[j]._id %>" class="option"><span class="fa fa-angle-right"></span> <%= poll[0].answers[j].answer %>   <span><%= poll[0].answers[j].votes %></span></li>
+        <li id="<%= poll[0].answers[j]._id %>" class="option"><span class="fa fa-angle-right"></span> <%= poll[0].answers[j].answer %>   <span class="right"><%= poll[0].answers[j].votes==1? '1 vote' : poll[0].answers[j].votes + ' votes' %></span></li>
         <% } %>
     </ul>
     <% if (user) { %>
         <form class="answer">
-            <label>Add Answer:</label>
-            <input type="text" class="form-control" name="answer" id="answer" required>
-            <input type="hidden" class="form-control" name="pollid" id="pollid" value="<%=poll[0]._id%>">
-        </form>
+            <input type="text" class="form-control" name="answer" id="answer" required placeholder="Add Option">
+            <button type="submit" class="btn right" name="addoption" id="addoption" hidden>Add</button>
+            <input type="hidden" class="form-control" name="pollid" id="pollid" value="<%=poll[0]._id%>">        </form>
     <% } %>
     
     <h1>Results:</h1>

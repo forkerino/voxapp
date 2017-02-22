@@ -14,7 +14,7 @@ const pollCtrl = {
     },
     
     getPollsUser: function getpollsUser(req, res, next){
-        Poll.find({userid : req.user._id},function(err, polls){
+        Poll.find({userid : req.user._id}).sort({_id:-1}).exec(function(err, polls){
             if (err) throw err;
             req.polls = [];
             polls.map(poll => req.polls.push(poll));

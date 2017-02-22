@@ -17,14 +17,18 @@
 
     <div>
         <h1>VoxApp</h1>
+        <p>After registering, you are able to create your own polls, as well as add options to polls that 
+        others have made. Anyone, registered or not, can vote (once) on any poll by any user.</p>
     </div>
+
     <div class="polls">
-        <p>Latest Polls:</p>
+        <h3>Latest Polls:</h3>
             <ul><% for(var i=0; i<polls.length; i++) {%>
-                <li>
+                <li class="question">
                     <a href="<%= polls[i].username + "/" + polls[i]._id %>"><%= polls[i].question %>
                     </a>
                 </li>
+                <p class="subtitle">By <%= polls[i].username %>. <%= polls[i].answers.length %> options, <%= polls[i].answers.reduce((a,b)=>a + b.votes,0) %> total vote(s).</p>
             <% } %></ul>
     </div>
 </div>

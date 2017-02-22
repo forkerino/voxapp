@@ -20,6 +20,10 @@ span.fa {
     cursor: pointer;
 }
 
+span.fa-question {
+    cursor: default;
+}
+
 a {
     color: #333;
     text-decoration: none;
@@ -41,6 +45,11 @@ a:hover {
     font-size: 0.9em;
     font-style: italic;
     margin-top: -10px;
+}
+
+.question a {
+    font-size: 1.2em;
+    color: #0C93E8;
 }
 
 .userbar, .loginbar {
@@ -65,11 +74,18 @@ a:hover {
 .userbar .welcome span {
     font-style: italic;
 }
+
 .right {
     float: right;
 }
+
 .logout, .signupbtn {
     margin-right: 20px;
+}
+
+.home {
+    font-size: 2em;    
+    padding: 1em;
 }
 
 ul {
@@ -103,14 +119,14 @@ input {
 }
 form.answer {
     display: inline;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .answer input {
-    width: 90%;
+    width: 50%;
 }
 
-.form-group>button {
+.form-group>button, button {
     border: 1px solid rgba(29, 88, 255, 1);
     background-color: rgba(29, 88, 255, 0.8);
     color: white;

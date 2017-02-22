@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Profile - VoxApp</title>
+    <title>My Polls - VoxApp</title>
     <link rel="stylesheet" href="/public/style/style.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -15,12 +15,10 @@
         <div class="polls">
             <h1>My Polls</h1>
             <ul><% for(var i=0; i<polls.length; i++) {%>
-               <li><a href="<%= user.local.username + "/" + polls[i]._id %>">
+               <li class="question"><a href="<%= user.local.username + "/" + polls[i]._id %>">
                        <%= polls[i].question %>
-                    </a> <span class="fa fa-trash-o delete" id="<%= polls[i]._id %>"></span></li>
-               <ul><% for(var j=0; j<polls[i].answers.length; j++) {%>
-                   <li><%= polls[i].answers[j].answer %> <%= polls[i].answers[j].votes %></li>
-               <% } %></ul>
+                    </a> <span class="fa fa-trash-o delete right" id="<%= polls[i]._id %>"></span></li>
+                    <p class="subtitle"><%= polls[i].answers.length %> options, <%= polls[i].answers.reduce((a,b)=>a + b.votes,0) %> total vote(s).</p>
             <% } %></ul>
         </div>        
 

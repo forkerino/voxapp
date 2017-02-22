@@ -1,8 +1,9 @@
 'use strict';
 (function(){
     let options = document.getElementsByClassName('option');
-    let currentLocation = window.location.pathname;
+    
     for (let i=0; i<options.length; i++){
+        let currentLocation = window.location.pathname;
         options[i].addEventListener('click',function(e){
             let id = e.target.getAttribute('id');
             if (id== null) return;
@@ -28,9 +29,10 @@
         document.body.removeChild(textarea);
     });
     
-    let addOptionBtn = document.getElementById('answer');
-    addOptionBtn.addEventListener('keypress', function(e){
-        if (e.keyCode!== 13) return;
+    let addOptionBtn = document.getElementById('addoption');
+    addOptionBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        let currentLocation = window.location.pathname;
         let answer = document.getElementById('answer').value; 
         
         if (answer === "") return;
