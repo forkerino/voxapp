@@ -1,23 +1,24 @@
 'use strict';
 
-const express = require('express');
-const port = process.env.PORT || 8080;
-const mongoose = require('mongoose');
-const flash = require('connect-flash');
-const passport = require('passport');
-const morgan       = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser   = require('body-parser');
-const session      = require('express-session');
-const configDB = require('./config/database.js');
-const routes = require('./app/routes.js');
-const configPP = require('./config/passport.js');
-const path = require('path');
-const favicon = require('serve-favicon');
+const express       = require('express');
+const port          = process.env.PORT || 8080;
+const mongoose      = require('mongoose');
+const flash         = require('connect-flash');
+const passport      = require('passport');
+const morgan        = require('morgan');
+const cookieParser  = require('cookie-parser');
+const bodyParser    = require('body-parser');
+const session       = require('express-session');
+const routes        = require('./app/routes.js');
+const configPP      = require('./config/passport.js');
+const path          = require('path');
+const favicon       = require('serve-favicon');
+
+require('dotenv').config();
 
 const app = express();
 
-mongoose.connect(configDB.url);
+mongoose.connect(process.env.MONGO_URI);
 
 configPP(passport);
 

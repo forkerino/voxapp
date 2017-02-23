@@ -45,3 +45,4 @@ The removing part was easy, now on with the boring stuff.
 Had to add `app.use('/public', express.static(process.cwd() + '/public'));` 
 in my server.js to access the folder.
 
+
